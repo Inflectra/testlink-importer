@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Name="Spira TestLink Importer" Id="94DCD957-666C-45B6-A312-642976C8C35A"
+   UpgradeCode="A78AE102-8974-4F48-B972-7A5A4A66001A"
+   Language="1033" Version="5.0.0.0" Manufacturer="Inflectra">
+
+    <Package Id="*" InstallerVersion="300" Compressed="yes"
+             Keywords="Test Case Management, Software Testing"
+             Description="SpiraTest: Migration Tool for TestLink" />
+
+    <Condition Message=
+"You need to be an administrator to install this product.">
+      Privileged
+    </Condition>
+    <Condition Message=
+"This setup requires the .NET Framework 4.0 or higher.">
+      <![CDATA[MsiNetAssemblySupport >= "4.0.30319"]]>
+    </Condition>
+
+    <Media Id="1" Cabinet="Importer.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="D_MyCompany" Name="Inflectra">
+          <Directory Id="INSTALLDIR" Name="TestLink Importer">
+            <Component Id="C_MainExecutable" Guid="C830B354-27FB-487E-BF81-FDD95A3995CD">
+              <File Id="F_TestLinkImporter_exe" Name="TestLinkImporter.exe"
+               Source="..\TestLinkImporter\bin\Release\TestLinkImporter.exe" Vital="yes">
+                <Shortcut Id="S_ApplicationShortcut" Directory="ProgramMenuProductDirTools"
+                 Name="TestLink Importer" WorkingDirectory="INSTALLDIR"
+                 Icon="App.ico" IconIndex="0" Advertise="yes" />
+              </File>
+              <File Id="F_TestLinkImporter_exe_config" Name="TestLinkImporter.exe.config"
+                  Source="..\TestLinkImporter\bin\Release\TestLinkImporter.exe.config" />
+              <File Id="F_TestLinkAPI_dll" Name="TestLinkAPI.dll"
+                  Source="..\TestLinkImporter\bin\Release\TestLinkAPI.dll" />
+              <File Id="F_CookComputing_XmlRpcV2_dll" Name="CookComputing.XmlRpcV2.dll"
+                  Source="..\TestLinkImporter\bin\Release\CookComputing.XmlRpcV2.dll" />
+              <RemoveFolder Id="INSTALLDIR" On="uninstall" />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ProgramMenuDir" Name="Inflectra">
+          <Directory Id="ProgramMenuProductDir" Name="SpiraTest">
+            <Directory Id="ProgramMenuProductDirTools" Name="Tools">
+              <Component Id="C_ProgramMenuDir" Guid="A6BA0D98-BA14-4E8E-B1F9-16EEC4DCAA2A">
+                <RemoveFolder Id="RemoveProgramMenuDir" Directory="ProgramMenuDir" On="uninstall" />
+                <RemoveFolder Id="RemoveProgramMenuProductDir" Directory="ProgramMenuProductDir" On="uninstall" />
+                <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]"
+                 Type="string" Value="" KeyPath="yes" />
+                <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+              </Component>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Icon Id="App.ico" SourceFile="App.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="App.ico" />
+
+    <Feature Id="Complete" Level="1">
+      <ComponentRef Id="C_MainExecutable" />
+      <ComponentRef Id="C_ProgramMenuDir" />
+    </Feature>
+
+    <WixVariable Id="WixUIBannerBmp" Value="bannrbmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="dlgbmp.bmp" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+    <UIRef Id="WixUI_InstallDir" />
+
+    <!-- This will ensure that the LaunchConditions
+  are executed only after searching -->
+    <InstallUISequence>
+      <LaunchConditions After="AppSearch" />
+    </InstallUISequence>
+    <InstallExecuteSequence>
+      <LaunchConditions After="AppSearch" />
+    </InstallExecuteSequence>
+
+  </Product>
+</Wix>

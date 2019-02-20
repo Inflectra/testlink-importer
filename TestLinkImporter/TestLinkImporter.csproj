@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3996A7D6-9DD3-4F3C-B41A-7F6C23F32496}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inflectra.SpiraTest.AddOns.TestLinkImporter</RootNamespace>
+    <AssemblyName>TestLinkImporter</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImportThread.cs" />
+    <Compile Include="NameIdObject.cs" />
+    <Compile Include="Import.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiniDump.cs" />
+    <Compile Include="PermissiveSecurityPolicy.cs" />
+    <Compile Include="Progress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\SpiraSoapService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="Import.resx">
+      <DependentUpon>Import.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Progress.resx">
+      <DependentUpon>Progress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteArtifactSubscription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteAssociation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteAutomatedTestRun.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteAutomationEngine.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteAutomationHost.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteBuild.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteComment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteComponent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteCustomList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteCustomListValue.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteCustomProperty.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteDataMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteDataSyncSystem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteDocument.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteDocumentFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteDocumentType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteDocumentVersion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteHistoryChange.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteHistoryChangeSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteIncident.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteIncidentPriority.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteIncidentSeverity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteIncidentStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteIncidentType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteLinkedArtifact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteManualTestRun.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteMessageInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteProject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteProjectArtifact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteProjectRole.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteProjectUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteRelease.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteReleaseStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteReleaseTestCaseMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteReleaseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteRequirement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteRequirementStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteRequirementStep.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteRequirementTestCaseMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteRequirementType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteSavedFilter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteSetting.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteSourceCodeBranch.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteSourceCodeFile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteSourceCodeFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteSourceCodeRevision.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTaskFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTaskStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTaskType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestCase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestCaseFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestCaseParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestCaseStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestCaseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestConfigurationSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestRun.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestSetFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestSetParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestSetTestCaseMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestSetTestCaseParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestStep.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteTestStepParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteUserMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteVersion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteWorkflowCustomProperty.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteWorkflowField.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\Inflectra.SpiraTest.AddOns.TestLinkImporter.SpiraSoapService.RemoteWorkflowTransition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SpiraSoapService\SoapService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <Content Include="SpiraTest-Importer-Icon_Large.png" />
+    <Content Include="TestLink_Icon.png" />
+    <None Include="Service References\SpiraSoapService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\SpiraSoapService\configuration.svcinfo" />
+    <None Include="Service References\SpiraSoapService\configuration91.svcinfo" />
+    <None Include="Service References\SpiraSoapService\SoapService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SpiraSoapService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestLinkAPI\TestLinkAPI.csproj">
+      <Project>{743bc178-7039-4d01-b3af-83099b8411ba}</Project>
+      <Name>TestLinkAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XmlRpc\xmlrpc.csproj">
+      <Project>{1b4b0a58-0afb-4090-91dd-18912cc7de65}</Project>
+      <Name>xmlrpc</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

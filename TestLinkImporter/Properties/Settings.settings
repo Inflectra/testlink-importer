@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Inflectra.SpiraTest.AddOns.TestLinkImporter.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SpiraUserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">administrator</Value>
+    </Setting>
+    <Setting Name="SpiraUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://mysite.spiraservice.net</Value>
+    </Setting>
+    <Setting Name="SpiraPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PleaseChange</Value>
+    </Setting>
+    <Setting Name="TestSteps" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="TestCases" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="TestSuites" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="TestLinkApiKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TestLinkUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://myserver/testlink</Value>
+    </Setting>
+    <Setting Name="Defects" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="NewUserPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PleaseChange</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

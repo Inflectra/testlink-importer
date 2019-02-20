@@ -1,0 +1,6 @@
+http://183.82.116.26:81/testlink/lib/api/xmlrpc/v1/xmlrpc.php
+
+API Key: 87ec4301adfca51e2f1a9d90d27476d0
+
+Login: spirauser
+Password: welcome123
